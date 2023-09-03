@@ -2,16 +2,17 @@ import type { SiteConfig } from '$lib/types/site'
 
 export const site: SiteConfig = {
   protocol: import.meta.env.URARA_SITE_PROTOCOL ?? import.meta.env.DEV ? 'http://' : 'https://',
-  domain: import.meta.env.URARA_SITE_DOMAIN ?? 'urara-demo.netlify.app',
-  title: 'Urara',
-  subtitle: 'Sweet & Powerful SvelteKit Blog Template',
+  domain: import.meta.env.URARA_SITE_DOMAIN ?? 'robertmaye.co.uk',
+  title: 'Silicon Sentience',
+  subtitle: 'The Emergence of Synthetic Intelligence',
   lang: 'en-US',
-  description: 'Powered by SvelteKit/Urara',
+  description: 'Exploring the fusion of organic thought and machine precision. Dive into the rise and evolution of synthetic intelligence.',
   author: {
-    avatar: '/assets/maskable@512.png',
-    name: 'John Doe',
-    status: '🌸',
-    bio: 'lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    avatar: '/assets/aiman.png',
+    name: 'Robert Maye',
+    status: '💫',
+    bio: 'Navigating the frontier where the organic meets the algorithmic. Here, I delve into the depths of synthetic intelligence, sharing discoveries and reflections.',
+    linktree: 'https://linktr.ee/robmaye',
   },
-  themeColor: '#3D4451'
+  themeColor: '#2D3748'
 }

@@ -18,19 +18,20 @@ export type SiteConfig = {
   author: Omit<FFFAuthor, 'url'> & {
     status?: string
     bio?: string
+    linktree?: string
     metadata?: (
       | {
-          text: string
-          icon?: string
-          link?: string
-          rel?: string
-        }
+        text: string
+        icon?: string
+        link?: string
+        rel?: string
+      }
       | {
-          text?: string
-          icon: string
-          link?: string
-          rel?: string
-        }
+        text?: string
+        icon: string
+        link?: string
+        rel?: string
+      }
     )[]
   }
   /** for web app manifest only.
