@@ -15,14 +15,18 @@ export default {
     adapter: Object.keys(process.env).some(key => key === 'VERCEL')
       ? adapterVercel()
       : Object.keys(process.env).some(key => key === 'NETLIFY')
-      ? adapterNetlify()
-      : adapterStatic({
+        ? adapterNetlify()
+        : adapterStatic({
           pages: 'build',
           assets: 'build',
           fallback: undefined
         }),
     prerender: {
-      handleMissingId: 'warn'
+      handleMissingId: 'warn',
+      handleHttpError: () => {
+        return
+      }
+
     },
     csp: {
       mode: 'auto',
@@ -32,3 +36,4 @@ export default {
     }
   }
 }
+

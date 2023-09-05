@@ -1,0 +1,26 @@
+Blog posts
+
+- Longevity escape velocity - panacea is coming, latest vid and older vids
+- 2 assumptions theory
+- Daveshap - podcast + anthropic
+- Flow proneness - work 1 minute after waking up, it’ll change your life
+- Sweetspot between biohackers and entrepreneurial approach, wake up and dive into your highest priority work
+- Shift to higher flow state of consciousness - the bigger picture and DO THIS OFTEN
+- beyond vector search - daveshap - masters work soon
+- Meta - LM infinite
+
+- Find a niche, in a rapidly expanding field, and take it to the extreme -> AI -> LLMs -> Cognitive Architecture -> feeds back with extreme confidence
+
+# What 
+{description of what this is}
+
+# Why 
+As I write this first passage in hopefully a long series of articles, I am heading up to donegal, a remote idylic wilderness in the depths of ireland.
+Part of me is questioning why I should even bother to spend time writing about AI, when I've such a beautiful life I could settle down into - knowing what I know about the field, I couldn't on good conscience step back and just let things take their course. Some things are bigger than us all, and the potential evolutionary step in the wave of this new AI movement is too big to just pass up and hope that everyone else gets right. Now this isn't a conceited statement, no single man or woman is the driver of such a vast shift in reality alone, but on this principle, I must take action to attempt steer humanity towards the best-case utopia outcome as, if everyone who knew enough and was philanthropic too make good effective and aligned change in the field stepped back, leaving efforts in the hands of those driven by instrumentally convergent goals (power seeking, money etc..) then I don't have much hope for our future.
+
+# A little about me / who am I
+AI researcher from the UK, graduated from southampton uni with a 1st class in computer science in 2023. CUrrently pursuing a masters in advanced computing at ICL, a chance for me to further my research in this space. Currently working at an AI development consultancy / dev studio.
+During my undergrad degree, around the time of my dissertation, I discovered david Shapiro's works surrounding natural language cognitive architecture, specifically the demonstrability of 
+inimately familiar with the works of david shapiro.
+
+Who knows what this blog will turn into, I don't. I just want to vent some thoughts into the cosmos, and see how things bounce.
