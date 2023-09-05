@@ -1,0 +1,39 @@
+{
+  "name": "Silicon Sentience",
+  "short_name": "Silicon Sentience",
+  "lang": "en-US",
+  "description": "Exploring the fusion of organic thought and machine precision. Dive into the rise and evolution of synthetic intelligence.",
+  "id": "https://robertmaye.co.uk/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2D3748",
+  "theme_color": "#2D3748",
+  "icons": [
+    {
+      "src": "https://robertmaye.co.uk/assets/any@192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://robertmaye.co.uk/assets/any@512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://robertmaye.co.uk/assets/maskable@192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://robertmaye.co.uk/assets/maskable@512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
