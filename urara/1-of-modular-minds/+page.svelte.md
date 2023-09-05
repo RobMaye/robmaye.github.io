@@ -1,6 +1,6 @@
 ---
-title: 'The Core and The Modules: A Speculative Exploration of Consciousness'
-image: '/why/img.jpeg'
+title: '1. The Core and The Modules: A Speculative Exploration of Consciousness'
+image: '/1-of-modular-minds/img.jpeg'
 alt: 'Consciousness Reimagined'
 created: 2023-08-31
 updated: 2023-08-31
