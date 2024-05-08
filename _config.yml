@@ -121,7 +121,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: ruminations # blog_name will be displayed in your blog page
-blog_description: find my longform thoughts here
+blog_description: find my longform thoughts here. hold tight. in the process of moving blog posts over to this site.
 permalink: /blog/:year/:title/
 
 # Pagination
