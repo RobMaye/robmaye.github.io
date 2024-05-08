@@ -1,12 +1,12 @@
 ---
 layout: about
-title: "Robert Maye - Machine Learning Engineer & Researcher"
+title: "about"
 permalink: /
-subtitle: "<a href='#affiliations'>Affiliations</a> | London, UK | <a href='mailto:robert@robertmaye.co.uk'>robert@robertmaye.co.uk</a> | Motivated by the synergy of AI and human cognition."
+subtitle: "London, UK | <a href='mailto:robert@robertmaye.co.uk'>robert@robertmaye.co.uk</a> | Motivated by the synergy of AI and human cognition."
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: v8gSfSgV_400x400.jpg
   image_circular: true
   more_info: >
     <p>Imperial College London</p>
