@@ -1,25 +1,27 @@
 ---
 layout: about
-title: about
+title: "Robert Maye - Machine Learning Engineer & Researcher"
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: "<a href='#affiliations'>Affiliations</a> | London, UK | <a href='mailto:robert@robertmaye.co.uk'>robert@robertmaye.co.uk</a> | Motivated by the synergy of AI and human cognition."
 
 profile:
   align: right
-  image: v8gSfSgV_400x400.jpg
-  image_circular: false # crops the image to make it circular
+  image: prof_pic.jpg
+  image_circular: true
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Imperial College London</p>
+    <p>Department of Computing</p>
+    <p>London, SW7 2AZ, UK</p>
 
-news: true # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+news: true
+selected_papers: true
+social: true
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Welcome to my personal website. I am Robert Maye, a passionate Machine Learning Engineer and MSc student at Imperial College London, currently exploring the realms of cognitive architecture and multi-agent systems. My research is driven by the potential of swarm intelligence to revolutionize generalized knowledge work.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+In the professional sphere, I specialize in developing advanced AI solutions that integrate natural language processing, vector search, and conversational AI to transform how we interact with information. My work with companies like Aurelio in London and 10spy in the USA has focused on creating cutting-edge, efficient AI solutions tailored for diverse industry needs.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+My personal projects include HoloTutor, an AI-driven educational tool, and InfoRetain, which aims to enhance learning and retention for students and educators through AI-supported tools. Additionally, I'm engaged in developing Embodied Cognitive Agents that can operate autonomously within simulated environments.
+
+Here, you'll find updates on my latest projects, selected publications, and insights into my ongoing research. Feel free to connect with me through the social links below or drop an email for collaborations or discussions.
