@@ -22,6 +22,6 @@ Welcome to my personal website. I am Robert Maye, a passionate Machine Learning 
 
 In the professional sphere, I specialize in developing advanced AI solutions that integrate natural language processing, vector search, and conversational AI to transform how we interact with information. My work with companies like Aurelio in London and 10spy in the USA has focused on creating cutting-edge, efficient AI solutions tailored for diverse industry needs.
 
-My personal projects include HoloTutor, an AI-driven educational tool, and InfoRetain, which aims to enhance learning and retention for students and educators through AI-supported tools. Additionally, I'm engaged in developing Embodied Cognitive Agents that can operate autonomously within simulated environments.
+My personal projects include HoloTutor, an AI-driven educational tool, and InfoRetain, which aims to enhance learning and retention for students and educators through AI-supported tools. Additionally, I'm engaged in developing multi-agent systems that can operate autonomously, a move towards generalising knowledge work.
 
 Here, you'll find updates on my latest projects, selected publications, and insights into my ongoing research. Feel free to connect with me through the social links below or drop an email for collaborations or discussions.
