@@ -6,7 +6,7 @@ subtitle: "London, UK | <a href='mailto:robert@robertmaye.co.uk'>robert@robertma
 
 profile:
   align: right
-  image: v8gSfSgV_400x400.jpg
+  image: rob_new.jpeg
   image_circular: true
   more_info: >
     <p>Imperial College London</p>
