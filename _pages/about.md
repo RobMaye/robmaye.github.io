@@ -2,8 +2,7 @@
 layout: about
 title: "about"
 permalink: /
-subtitle: "London, UK | <a href='mailto:robert@robertmaye.co.uk'>robert@robertmaye.co.uk</a> | Motivated by the synergy of AI and human cognition."
-
+subtitle: "London, UK | <a href='mailto:robert@robertmaye.co.uk'>robert@robertmaye.co.uk</a> | Advancing AI and human cognition synergy"
 profile:
   align: right
   image: rob_new.jpeg
@@ -12,16 +11,17 @@ profile:
     <p>Imperial College London</p>
     <p>Department of Computing</p>
     <p>London, SW7 2AZ, UK</p>
-
 news: true
 selected_papers: true
 social: true
 ---
 
-Welcome to my personal website. I am Robert Maye, a passionate Machine Learning Engineer and MSc student at Imperial College London, currently exploring the realms of cognitive architecture and multi-agent systems. My research is driven by the potential of swarm intelligence to revolutionize generalized knowledge work.
+I hold an MSc in Advanced Computing from Imperial College London, specializing in Machine Learning Engineering and AI consultancy. My research focused on cognitive architecture and multi-agent systems, culminating in [AIversity](https://github.com/aurelio-labs/aiversity), an adaptive learning ecosystem leveraging multi-agent AI for personalized education.
 
-In the professional sphere, I specialize in developing advanced AI solutions that integrate natural language processing, vector search, and conversational AI to transform how we interact with information. My work with companies like Aurelio in London and 10spy in the USA has focused on creating cutting-edge, efficient AI solutions tailored for diverse industry needs.
+Professionally, I develop sophisticated AI solutions integrating natural language processing, vector search, and conversational AI. Currently contributing to innovative AI projects at [Aurelio](https://www.aurelio.ai/about-us), while also serving as an independent consultant, helping diverse clients harness the power of the latest step changes in AI technology.
 
-My personal projects include HoloTutor, an AI-driven educational tool, and InfoRetain, which aims to enhance learning and retention for students and educators through AI-supported tools. Additionally, I'm engaged in developing multi-agent systems that can operate autonomously, a move towards automating knowledge work.
+My expertise lies in exploring the synergy between AI and human cognition, with a particular interest in swarm intelligence and autonomous multi-agent systems. These technologies represent significant step changes in how we process and interact with information, holding immense potential to transform knowledge work.
 
-Here, you'll find updates on my latest projects, selected publications, and insights into my ongoing research. Feel free to connect with me through the social links below or drop an email for collaborations or discussions.
+Through my work, I aim to bridge the gap between academic research and practical AI applications, driving innovation that delivers tangible impact across industries.
+
+I welcome opportunities for collaboration.
