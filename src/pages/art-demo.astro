@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Art Prototypes — Rob Maye" description="Halftone flow candidates.">
+  <h1
+    class="text-3xl font-semibold tracking-tight text-stone-900 dark:text-stone-100 mb-2"
+  >
+    Halftone Flow — Image Candidates
+  </h1>
+  <p class="text-stone-500 dark:text-stone-400 mb-12">
+    Every image rendered through the same halftone-flow shader. Pick your favourite.
+  </p>
+
+  <div class="space-y-16">
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">1. Bristlecone Pine</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">Ancient tree, barren ridge, vast sky</p>
+      <div class="-mx-6"><canvas id="c-bristlecone"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">2. Mountain Peak</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">Snow-capped peak above clouds at golden hour</p>
+      <div class="-mx-6"><canvas id="c-mountain"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">3. Sea Cliffs</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">Towering cliffs, dark ocean, afternoon light</p>
+      <div class="-mx-6"><canvas id="c-seacliffs"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">4. Forest Canopy</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">Looking up through ancient trees, god-rays</p>
+      <div class="-mx-6"><canvas id="c-forest"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">5. Basalt Columns</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">Hexagonal rock formations, natural geometry</p>
+      <div class="-mx-6"><canvas id="c-basalt"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">6. Observatory</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">Brass telescope, dome interior, twilight sky</p>
+      <div class="-mx-6"><canvas id="c-observatory"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">7. Ex Machina 1</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">Brutalist glass house in Norwegian wilderness</p>
+      <div class="-mx-6"><canvas id="c-exmachina1"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">8. Ex Machina 2</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">More Ex Machina — stark architecture vs nature</p>
+      <div class="-mx-6"><canvas id="c-exmachina2"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">9. Ex Machina House</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">Reference house photo</p>
+      <div class="-mx-6"><canvas id="c-exhouse"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">10. Ex Machina Design</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">Design concept rendering</p>
+      <div class="-mx-6"><canvas id="c-exdesign"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">11. Juvet Hotel</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">The real Juvet Landscape Hotel, Norway</p>
+      <div class="-mx-6"><canvas id="c-juvet"></canvas></div>
+    </section>
+
+    <hr class="border-stone-200 dark:border-stone-800" />
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">OG: Parthenon</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">From the earlier round</p>
+      <div class="-mx-6"><canvas id="c-parthenon"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">OG: Nebula</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">From the earlier round</p>
+      <div class="-mx-6"><canvas id="c-nebula"></canvas></div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1">OG: Classical Bust</h2>
+      <p class="text-sm text-stone-400 dark:text-stone-500 mb-3 italic">From the earlier round</p>
+      <div class="-mx-6"><canvas id="c-bust"></canvas></div>
+    </section>
+
+  </div>
+
+  <div class="mt-16 mb-8 text-center">
+    <a href="/" class="text-amber-600 dark:text-amber-400 hover:text-amber-500 transition-colors">
+      &larr; Back home
+    </a>
+  </div>
+</BaseLayout>
+
+<script>
+  import { renderHalftoneFlow } from "../lib/art/halftone-flow";
+
+  const isDark = document.documentElement.classList.contains("dark");
+  const bg = isDark ? "#0c0a09" : "#fafaf9";
+  const accent: [number, number, number] = isDark ? [251, 191, 36] : [180, 83, 9];
+
+  const base = "/images/art-sources/candidates/";
+  const ogBase = "/images/art-sources/";
+
+  const images: [string, string][] = [
+    ["c-bristlecone", base + "bristlecone-pine.png"],
+    ["c-mountain", base + "mountain-peak.png"],
+    ["c-seacliffs", base + "sea-cliffs.png"],
+    ["c-forest", base + "forest-canopy.png"],
+    ["c-basalt", base + "basalt-columns.png"],
+    ["c-observatory", base + "observatory.png"],
+    ["c-exmachina1", base + "ex-machina-1.png"],
+    ["c-exmachina2", base + "ex-machina-2.png"],
+    ["c-exhouse", base + "ex-machina-house.png"],
+    ["c-exdesign", base + "ex-machina-design.webp"],
+    ["c-juvet", base + "juvet-hotel.jpg"],
+    ["c-parthenon", ogBase + "parthenon.jpg"],
+    ["c-nebula", ogBase + "nebula.jpg"],
+    ["c-bust", ogBase + "bust.jpg"],
+  ];
+
+  // Stagger rendering so the page doesn't freeze loading 14 canvases at once
+  let idx = 0;
+  function renderNext() {
+    if (idx >= images.length) return;
+    const [id, src] = images[idx];
+    const canvas = document.getElementById(id) as HTMLCanvasElement | null;
+    if (canvas) {
+      renderHalftoneFlow(canvas, src, {
+        dotSpacing: 5,
+        bgColor: bg,
+        accentColor: accent,
+        particleCount: 2500,
+        flowNoiseScale: 0.003,
+        flowSpeed: 1.2,
+        colorBleedStrength: 0.9,
+        fadeEdge: true,
+      });
+    }
+    idx++;
+    // Stagger by 300ms so images load sequentially without jank
+    setTimeout(renderNext, 300);
+  }
+  renderNext();
+</script>

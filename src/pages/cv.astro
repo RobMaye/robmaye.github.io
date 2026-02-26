@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import resume from "../data/resume.json";
+---
+
+<BaseLayout title="CV — Rob Maye" description="Education, skills, and experience.">
+  <h1
+    class="text-3xl font-semibold tracking-tight text-stone-900 dark:text-stone-100 mb-10"
+  >
+    CV
+  </h1>
+
+  <div class="space-y-10">
+    <!-- Education -->
+    <section>
+      <h2
+        class="text-sm font-mono uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-4"
+      >
+        Education
+      </h2>
+      {
+        resume.education.map((edu) => (
+          <div class="mb-4">
+            <div class="flex items-baseline justify-between">
+              <h3 class="font-medium text-stone-900 dark:text-stone-100">
+                {edu.studyType} {edu.area}
+              </h3>
+              <span class="text-sm text-stone-400 dark:text-stone-500 font-mono">
+                {new Date(edu.startDate).getFullYear()}&ndash;{new Date(edu.endDate).getFullYear()}
+              </span>
+            </div>
+            <p class="text-stone-600 dark:text-stone-400">{edu.institution}</p>
+            {edu.score && (
+              <p class="text-sm text-stone-500 dark:text-stone-400 mt-1">
+                {edu.score}
+              </p>
+            )}
+            {edu.courses && edu.courses.length > 0 && (
+              <p class="text-sm text-stone-500 dark:text-stone-400 mt-1">
+                Focus: {edu.courses.join(", ")}
+              </p>
+            )}
+          </div>
+        ))
+      }
+    </section>
+
+    <!-- Work -->
+    <section>
+      <h2
+        class="text-sm font-mono uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-4"
+      >
+        Experience
+      </h2>
+      {
+        resume.work.map((job) => (
+          <div class="mb-4">
+            <div class="flex items-baseline justify-between">
+              <h3 class="font-medium text-stone-900 dark:text-stone-100">
+                {job.position}
+              </h3>
+              <span class="text-sm text-stone-400 dark:text-stone-500 font-mono">
+                {new Date(job.startDate).getFullYear()}&ndash;{job.endDate === "present" ? "Present" : new Date(job.endDate).getFullYear()}
+              </span>
+            </div>
+            <p class="text-stone-600 dark:text-stone-400">{job.name}</p>
+          </div>
+        ))
+      }
+    </section>
+
+    <!-- Skills -->
+    <section>
+      <h2
+        class="text-sm font-mono uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-4"
+      >
+        Skills
+      </h2>
+      {
+        resume.skills.map((group) => (
+          <div class="mb-3">
+            <div class="flex flex-wrap gap-2">
+              {group.keywords.map((skill) => (
+                <span class="text-sm px-2.5 py-1 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </section>
+
+    <!-- Awards -->
+    {
+      resume.awards && resume.awards.length > 0 && (
+        <section>
+          <h2 class="text-sm font-mono uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-4">
+            Awards
+          </h2>
+          {resume.awards.map((award) => (
+            <div class="mb-4">
+              <h3 class="font-medium text-stone-900 dark:text-stone-100">
+                {award.title}
+              </h3>
+              <p class="text-stone-600 dark:text-stone-400">
+                {award.awarder}, {new Date(award.date).getFullYear()}
+              </p>
+              {award.summary && (
+                <p class="text-sm text-stone-500 dark:text-stone-400 mt-1">
+                  {award.summary}
+                </p>
+              )}
+            </div>
+          ))}
+        </section>
+      )
+    }
+
+    <!-- Interests -->
+    {
+      resume.interests && resume.interests.length > 0 && (
+        <section>
+          <h2 class="text-sm font-mono uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-4">
+            Interests
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            {resume.interests.flatMap((i) => [i.name, ...i.keywords]).map((interest) => (
+              <span class="text-sm text-stone-600 dark:text-stone-400">
+                {interest}
+              </span>
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>

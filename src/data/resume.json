@@ -1,0 +1,98 @@
+{
+  "basics": {
+    "name": "Robert Maye",
+    "label": "Machine Learning Engineer & Researcher",
+    "image": "rob_new.jpeg",
+    "email": "robert@robertmaye.co.uk",
+    "phone": "+44 7528 656130",
+    "url": "https://robertmaye.co.uk",
+    "summary": "An advanced computing specialist focusing on natural language processing, vector search, and conversational AI, currently pursuing an MSc in Advanced Computing at Imperial College London, with a focus on cognitive architectures and multi-agent systems.",
+    "location": {
+      "address": "Imperial College London, Department of Computing",
+      "postalCode": "SW7 2AZ",
+      "city": "London",
+      "countryCode": "UK",
+      "region": "England"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "rob-maye",
+        "url": "https://linkedin.com/in/rob-maye"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Aurelio",
+      "position": "Machine Learning Engineer",
+      "url": "https://www.aurelio.ai/about-us",
+      "startDate": "2023-09-01",
+      "endDate": "present",
+      "summary": "Specializing in integrating search, NLP, and conversational AI to transform the interaction paradigm with information."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Imperial College London",
+      "location": "London, UK",
+      "url": "https://www.imperial.ac.uk/computing",
+      "area": "Advanced Computing",
+      "studyType": "MSc",
+      "startDate": "2023-01-01",
+      "endDate": "2024-12-31",
+      "score": "Distinction expected",
+      "courses": ["Natural Language Cognitive Architectures", "Multi-Agent Systems"]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Winner of the National App Development Competition",
+      "date": "2022-05-01",
+      "awarder": "Apps for Good",
+      "url": "https://appsforgood.org",
+      "summary": "Awarded for developing 'Kognition', an interactive classroom tool."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming and Technologies",
+      "level": "Advanced",
+      "keywords": [
+        "Python",
+        "Java",
+        "C++",
+        "TensorFlow",
+        "PyTorch",
+        "Natural Language Processing",
+        "Vector Search",
+        "Conversational AI"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Cognitive Architectures",
+      "keywords": [
+        "Swarm Intelligence",
+        "Agent Systems",
+        "Artificial Cognition"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "HoloTutor",
+      "summary": "Development of an AI-powered tutor during Anthropic hackathon.",
+      "highlights": ["Implemented a proof of concept for educational use"],
+      "startDate": "2023-01-01",
+      "endDate": "2023-12-31"
+    }
+  ]
+}

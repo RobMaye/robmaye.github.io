@@ -1,0 +1,43 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+const navLinks = [
+  { href: "/blog", label: "Blog" },
+  { href: "/projects", label: "Projects" },
+  { href: "/cv", label: "CV" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  class="sticky top-0 z-50 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-800"
+>
+  <nav class="max-w-2xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a
+      href="/"
+      class="font-semibold text-stone-900 dark:text-stone-100 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+    >
+      Rob Maye
+    </a>
+
+    <div class="flex items-center gap-6">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "text-sm transition-colors",
+              currentPath.startsWith(link.href)
+                ? "text-stone-900 dark:text-stone-100 font-medium"
+                : "text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>

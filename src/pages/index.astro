@@ -1,0 +1,88 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+import { SITE } from "../data/site";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE.title} description={SITE.description} />
+  </head>
+  <body
+    class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100 h-screen overflow-hidden flex flex-col font-sans antialiased"
+  >
+    <Header />
+
+    <main class="flex-1 w-full max-w-xl mx-auto px-6 pt-10 pb-0 relative z-10 flex flex-col justify-center text-center">
+      <p class="text-lg leading-relaxed text-stone-600 dark:text-stone-400 mb-6">
+        I think about how intelligent systems emerge from simple rules —
+        how agents coordinate, what happens when you give machines room to think,
+        and what that means for the rest of us.
+      </p>
+
+      <p class="text-stone-500 dark:text-stone-500 leading-relaxed mb-10">
+        Currently building at the intersection of AI and human cognition.
+        Previously Imperial College London.
+      </p>
+
+      <a
+        href="/blog/hello-world"
+        class="group inline-block"
+      >
+        <span class="text-xs font-mono uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-1 block">Latest</span>
+        <span class="text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+          What Holds When You're Worthless?
+        </span>
+      </a>
+    </main>
+
+    <!-- Art renders at natural aspect ratio, container clips overflow -->
+    <div class="relative w-full flex-1 min-h-0 overflow-hidden" id="art-wrapper">
+      <canvas id="hero-art" class="w-full block"></canvas>
+      <div class="absolute top-[30%] -translate-y-1/2 left-0 right-0 flex justify-center">
+        <div class="max-w-2xl w-full px-6 flex items-center justify-between text-sm text-stone-400 dark:text-stone-500">
+          <span>&copy; 2026 Rob Maye</span>
+          <div class="flex items-center gap-4">
+            <a href="https://github.com/robmaye" target="_blank" rel="noopener noreferrer" class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">GitHub</a>
+            <a href="https://linkedin.com/in/robmaye" target="_blank" rel="noopener noreferrer" class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">LinkedIn</a>
+            <a href="mailto:robmaye1@gmail.com" class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  import { renderHalftoneFlow } from "../lib/art/halftone-flow";
+
+  const isDark = document.documentElement.classList.contains("dark");
+  const bg = isDark ? "#0c0a09" : "#fafaf9";
+  const accent: [number, number, number] = isDark ? [251, 191, 36] : [180, 83, 9];
+
+  const art = renderHalftoneFlow(
+    document.getElementById("hero-art") as HTMLCanvasElement,
+    "/images/art-sources/candidates/sea-cliffs.png",
+    {
+      dotSpacing: 4,
+      bgColor: bg,
+      accentColor: accent,
+      particleCount: 4000,
+      flowNoiseScale: 0.002,
+      flowSpeed: 0.3,
+      colorBleedStrength: 0.9,
+      fadeEdge: false,
+      cropRegion: [0.30, 1] as [number, number],
+    }
+  );
+
+  window.addEventListener("theme-change", (e: Event) => {
+    const { isDark } = (e as CustomEvent).detail;
+    art.updateTheme(
+      isDark ? "#0c0a09" : "#fafaf9",
+      isDark ? [251, 191, 36] : [180, 83, 9]
+    );
+  });
+</script>

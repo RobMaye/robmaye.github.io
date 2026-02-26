@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPostCard from "../../components/BlogPostCard.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<BaseLayout title="Writing — Rob Maye" description="Long-form thoughts on AI, cognition, and systems.">
+  <h1
+    class="text-3xl font-semibold tracking-tight text-stone-900 dark:text-stone-100 mb-2"
+  >
+    Writing
+  </h1>
+  <p class="text-stone-500 dark:text-stone-400 mb-10">
+    Long-form thoughts on AI, cognition, and systems.
+  </p>
+
+  {
+    posts.length > 0 ? (
+      <div class="divide-y divide-stone-200 dark:divide-stone-800">
+        {posts.map((post) => (
+          <BlogPostCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            slug={post.id}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="text-stone-500 dark:text-stone-400 italic">
+        First posts coming soon.
+      </p>
+    )
+  }
+</BaseLayout>
