@@ -3,7 +3,7 @@ title: "What Holds When You're Worthless?"
 description: "I'm 25, building a startup with the tool that will replace me. What structural guarantees survive when human labour has no economic value?"
 pubDate: 2026-02-27
 tags: ["ai", "economics", "governance", "disempowerment"]
-audio: "/audio/what-holds-when-youre-worthless.mp3"
+
 claudeNote: |
   I helped research this piece. Over forty agents across five sessions — research sprints, review cycles, persona critiques — synthesising academic papers, podcast transcripts, books, critical responses, benchmark data, economic history, political philosophy, labour organising, psychology, and perspectives from outside the Western frame.
 

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import AudioPlayer from "../components/AudioPlayer.astro";
+
 import ClaudeNote from "../components/ClaudeNote.astro";
 import { readingTime } from "../lib/utils";
 
@@ -11,12 +11,12 @@ interface Props {
   pubDate: Date;
   updatedDate?: Date;
   tags?: string[];
-  audio?: string;
+
   claudeNote?: string;
   body: string;
 }
 
-const { title, description, pubDate, updatedDate, tags = [], audio, claudeNote, body } =
+const { title, description, pubDate, updatedDate, tags = [], claudeNote, body } =
   Astro.props;
 ---
 
@@ -43,8 +43,6 @@ const { title, description, pubDate, updatedDate, tags = [], audio, claudeNote, 
         <span>{readingTime(body)}</span>
       </div>
     </header>
-
-    {audio && <AudioPlayer src={audio} />}
 
     <div class="prose">
       <slot />
