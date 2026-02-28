@@ -11,36 +11,30 @@ import { SITE } from "../data/site";
     <BaseHead title={SITE.title} description={SITE.description} />
   </head>
   <body
-    class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100 h-screen overflow-hidden flex flex-col font-sans antialiased"
+    class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100 h-dvh overflow-hidden flex flex-col font-sans antialiased"
   >
+    <!-- Film grain overlay -->
+    <!-- Film grain with warm Anthropic-tinted noise -->
+    <div class="fixed inset-0 pointer-events-none z-50 opacity-[0.04] dark:opacity-[0.05]" id="grain"></div>
+
     <Header />
 
     <main class="flex-1 w-full max-w-xl mx-auto px-6 pt-10 pb-0 relative z-10 flex flex-col justify-center text-center">
-      <p class="text-lg leading-relaxed text-stone-600 dark:text-stone-400 mb-6">
-        I think about how intelligent systems emerge from simple rules —
-        how agents coordinate, what happens when you give machines room to think,
-        and what that means for the rest of us.
-      </p>
-
-      <p class="text-stone-500 dark:text-stone-500 leading-relaxed mb-10">
-        Currently building at the intersection of AI and human cognition.
-        Previously Imperial College London.
-      </p>
-
       <a
-        href="/blog/hello-world"
+        href="/blog/what-holds-when-youre-worthless"
         class="group inline-block"
       >
         <span class="text-xs font-mono uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-1 block">Latest</span>
-        <span class="text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
-          What Holds When You're Worthless?
+        <span class="text-lg font-medium text-amber-700 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">
+          What Holds When You're Worthless? <span class="inline-block group-hover:translate-x-0.5 transition-transform">&rarr;</span>
         </span>
+        <span class="text-xs font-mono text-stone-400 dark:text-stone-500 mt-1 block">27 Feb 2026</span>
       </a>
     </main>
 
     <!-- Art renders at natural aspect ratio, container clips overflow -->
     <div class="relative w-full flex-1 min-h-0 overflow-hidden" id="art-wrapper">
-      <canvas id="hero-art" class="w-full block"></canvas>
+      <canvas id="hero-art" class="w-full block absolute bottom-0 left-0 md:static"></canvas>
       <div class="absolute top-[30%] -translate-y-1/2 left-0 right-0 flex justify-center">
         <div class="max-w-2xl w-full px-6 flex items-center justify-between text-sm text-stone-400 dark:text-stone-500">
           <span>&copy; 2026 Rob Maye</span>
@@ -56,20 +50,47 @@ import { SITE } from "../data/site";
 </html>
 
 <script>
+  // Film grain — generate a noise texture and tile it
+  (function initGrain() {
+    const canvas = document.createElement("canvas");
+    canvas.width = 256;
+    canvas.height = 256;
+    const ctx = canvas.getContext("2d")!;
+    const imageData = ctx.createImageData(256, 256);
+    const data = imageData.data;
+    for (let i = 0; i < data.length; i += 4) {
+      const v = Math.random() * 255;
+      // Warm tint — push toward Anthropic sand/parchment (slight amber bias)
+      data[i] = Math.min(255, v * 1.08);     // R slightly warm
+      data[i + 1] = Math.min(255, v * 0.98); // G slightly pulled
+      data[i + 2] = v * 0.85;                // B pulled back for warmth
+      data[i + 3] = 255;
+    }
+    ctx.putImageData(imageData, 0, 0);
+    const grain = document.getElementById("grain");
+    if (grain) {
+      grain.style.backgroundImage = `url(${canvas.toDataURL()})`;
+      grain.style.backgroundRepeat = "repeat";
+    }
+  })();
+
   import { renderHalftoneFlow } from "../lib/art/halftone-flow";
 
   const isDark = document.documentElement.classList.contains("dark");
   const bg = isDark ? "#0c0a09" : "#fafaf9";
   const accent: [number, number, number] = isDark ? [251, 191, 36] : [180, 83, 9];
 
+  const isMobile = window.innerWidth < 768;
+  const wrapper = document.getElementById("art-wrapper")!;
+
   const art = renderHalftoneFlow(
     document.getElementById("hero-art") as HTMLCanvasElement,
     "/images/art-sources/candidates/sea-cliffs.png",
     {
-      dotSpacing: 4,
+      dotSpacing: isMobile ? 3 : 4,
       bgColor: bg,
       accentColor: accent,
-      particleCount: 4000,
+      particleCount: isMobile ? 3000 : 4000,
       flowNoiseScale: 0.002,
       flowSpeed: 0.3,
       colorBleedStrength: 0.9,
@@ -81,8 +102,8 @@ import { SITE } from "../data/site";
   window.addEventListener("theme-change", (e: Event) => {
     const { isDark } = (e as CustomEvent).detail;
     art.updateTheme(
-      isDark ? "#0c0a09" : "#fafaf9",
-      isDark ? [251, 191, 36] : [180, 83, 9]
+      isDark ? "#1a0a10" : "#fdf2f8",
+      isDark ? [244, 114, 182] : [219, 39, 119]
     );
   });
 </script>

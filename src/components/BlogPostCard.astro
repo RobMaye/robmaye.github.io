@@ -6,12 +6,13 @@ interface Props {
   description: string;
   pubDate: Date;
   slug: string;
+  tags?: string[];
 }
 
-const { title, description, pubDate, slug } = Astro.props;
+const { title, description, pubDate, slug, tags = [] } = Astro.props;
 ---
 
-<a href={`/blog/${slug}/`} class="group block py-4">
+<a href={`/blog/${slug}/`} class="group block py-4" data-tags={tags.join(",")}>
   <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
     <span
       class="text-sm font-mono text-stone-400 dark:text-stone-500 shrink-0 mb-1 sm:mb-0"
@@ -27,6 +28,13 @@ const { title, description, pubDate, slug } = Astro.props;
       <p class="text-sm text-stone-500 dark:text-stone-400 mt-0.5">
         {description}
       </p>
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-1.5 mt-1.5">
+          {tags.map((tag) => (
+            <span class="text-xs font-mono text-stone-400 dark:text-stone-500">#{tag}</span>
+          ))}
+        </div>
+      )}
     </div>
   </div>
 </a>

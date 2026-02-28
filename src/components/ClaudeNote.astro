@@ -1,0 +1,167 @@
+---
+interface Props {
+  note: string;
+}
+
+const { note } = Astro.props;
+
+// Split into paragraphs, treat last line (token count) separately if it starts with ~
+const lines = note.trim().split("\n\n");
+const lastLine = lines[lines.length - 1]?.trim();
+const hasTokenLine = lastLine?.startsWith("~");
+const paragraphs = hasTokenLine ? lines.slice(0, -1) : lines;
+const tokenLine = hasTokenLine ? lastLine : null;
+---
+
+<aside class="claude-note">
+  <div class="claude-note-header">
+    <!-- "Clawed" Claude Code mascot — wider hips, paired legs, eye tracking -->
+    <svg
+      class="claude-mascot"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 15 10"
+      width="45"
+      height="30"
+      aria-hidden="true"
+    >
+      <!--
+        Body: x=2-13 (11px), y=0-8
+        Arms: x=0-2 & x=13-15, y=4-6
+        Hip: x=2-13, y=6-8 (wider than legs = visible hip)
+        Legs (paired): x=3,5 (left pair) x=9,11 (right pair)
+        1px overhang each side, 3px center gap
+      -->
+      <path
+        d="M 2 0 H 13 V 4 H 15 V 6 H 13 V 8 H 12 V 10 H 11 V 8 H 10 V 10 H 9 V 8 H 6 V 10 H 5 V 8 H 4 V 10 H 3 V 8 H 2 V 6 H 0 V 4 H 2 Z"
+        fill="currentColor"
+        shape-rendering="crispEdges"
+      />
+      <g class="claude-eyes">
+        <rect x="5" y="1" width="1" height="2" fill="#292524" shape-rendering="crispEdges" />
+        <rect x="10" y="1" width="1" height="2" fill="#292524" shape-rendering="crispEdges" />
+      </g>
+    </svg>
+    <span class="claude-note-title">A note from Claude</span>
+  </div>
+
+  <div class="claude-note-body">
+    {paragraphs.map((p) => <p>{p.trim()}</p>)}
+  </div>
+
+  {
+    tokenLine && (
+      <div class="claude-note-footer">
+        <span>{tokenLine}</span>
+      </div>
+    )
+  }
+</aside>
+
+<script>
+  document.querySelectorAll<SVGSVGElement>('.claude-mascot').forEach((mascot) => {
+    const eyes = mascot.querySelector<SVGGElement>('.claude-eyes');
+    if (!eyes) return;
+
+    let tx = 0, ty = 0;
+    let cx = 0, cy = 0;
+
+    function onMove(clientX: number, clientY: number) {
+      const rect = mascot.getBoundingClientRect();
+      const mx = rect.left + rect.width / 2;
+      const my = rect.top + rect.height / 2;
+      const max = 0.4;
+      tx = Math.max(-max, Math.min(max, (clientX - mx) / 300));
+      ty = Math.max(-max, Math.min(max, (clientY - my) / 300));
+    }
+
+    document.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
+    document.addEventListener('touchmove', (e) => {
+      if (e.touches.length) onMove(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+
+    (function tick() {
+      cx += (tx - cx) * 0.12;
+      cy += (ty - cy) * 0.12;
+      eyes.setAttribute('transform', `translate(${cx.toFixed(3)}, ${cy.toFixed(3)})`);
+      requestAnimationFrame(tick);
+    })();
+  });
+</script>
+
+<style>
+  .claude-note {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(212, 113, 78, 0.25);
+    background: rgba(212, 113, 78, 0.05);
+    position: relative;
+  }
+
+  :global(.dark) .claude-note {
+    border-color: rgba(232, 133, 93, 0.2);
+    background: rgba(232, 133, 93, 0.07);
+  }
+
+  .claude-note-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .claude-mascot {
+    color: #d4714e;
+    flex-shrink: 0;
+  }
+
+  :global(.dark) .claude-mascot {
+    color: #e8855d;
+  }
+
+  .claude-note-title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #d4714e;
+  }
+
+  :global(.dark) .claude-note-title {
+    color: #e8855d;
+  }
+
+  .claude-note-body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-stone-600);
+  }
+
+  :global(.dark) .claude-note-body {
+    color: var(--color-stone-400);
+  }
+
+  .claude-note-body p {
+    margin-bottom: 1rem;
+  }
+
+  .claude-note-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .claude-note-footer {
+    margin-top: 1.25rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(212, 113, 78, 0.15);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #d4714e;
+    font-style: italic;
+  }
+
+  :global(.dark) .claude-note-footer {
+    border-top-color: rgba(232, 133, 93, 0.12);
+    color: #e8855d;
+  }
+</style>

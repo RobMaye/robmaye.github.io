@@ -22,10 +22,38 @@ const { title, description, image, hideFooter = false } = Astro.props;
   <body
     class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100 min-h-screen flex flex-col font-sans antialiased"
   >
+    <!-- Film grain overlay -->
+    <div class="fixed inset-0 pointer-events-none z-50 opacity-[0.03] dark:opacity-[0.04]" id="grain"></div>
+
     <Header />
-    <main class="flex-1 w-full max-w-2xl mx-auto px-6 py-16">
+    <main class="flex-1 w-full max-w-2xl mx-auto px-6 py-16 relative">
       <slot />
     </main>
     {!hideFooter && <Footer />}
   </body>
 </html>
+
+<script>
+  (function initGrain() {
+    const canvas = document.createElement("canvas");
+    canvas.width = 256;
+    canvas.height = 256;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const imageData = ctx.createImageData(256, 256);
+    const data = imageData.data;
+    for (let i = 0; i < data.length; i += 4) {
+      const v = Math.random() * 255;
+      data[i] = Math.min(255, v * 1.08);
+      data[i + 1] = Math.min(255, v * 0.98);
+      data[i + 2] = v * 0.85;
+      data[i + 3] = 255;
+    }
+    ctx.putImageData(imageData, 0, 0);
+    const grain = document.getElementById("grain");
+    if (grain) {
+      grain.style.backgroundImage = `url(${canvas.toDataURL()})`;
+      grain.style.backgroundRepeat = "repeat";
+    }
+  })();
+</script>

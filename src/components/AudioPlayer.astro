@@ -1,0 +1,90 @@
+---
+interface Props {
+  src: string;
+}
+
+const { src } = Astro.props;
+---
+
+<div
+  class="flex items-center gap-3 px-4 py-3 rounded-lg border border-stone-200 dark:border-stone-800 bg-stone-100/50 dark:bg-stone-900/50 mb-10"
+  id="audio-player"
+>
+  <button
+    id="play-btn"
+    class="shrink-0 w-9 h-9 flex items-center justify-center rounded-full bg-amber-600 dark:bg-amber-500 text-white dark:text-stone-950 hover:bg-amber-500 dark:hover:bg-amber-400 transition-colors cursor-pointer"
+    aria-label="Play audio"
+  >
+    <svg id="icon-play" class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M6.3 2.84A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.27l9.344-5.891a1.5 1.5 0 000-2.538L6.3 2.841z" />
+    </svg>
+    <svg id="icon-pause" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M5.75 3a.75.75 0 00-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75V3.75A.75.75 0 007.25 3h-1.5zM12.75 3a.75.75 0 00-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75V3.75a.75.75 0 00-.75-.75h-1.5z" />
+    </svg>
+  </button>
+
+  <div class="flex-1 flex flex-col gap-1 min-w-0">
+    <div class="flex items-center justify-between text-xs font-mono text-stone-400 dark:text-stone-500">
+      <span>Listen to this post</span>
+      <span id="time-display">0:00 / 0:00</span>
+    </div>
+    <div
+      id="progress-bar"
+      class="h-1.5 w-full bg-stone-200 dark:bg-stone-700 rounded-full cursor-pointer overflow-hidden"
+    >
+      <div
+        id="progress-fill"
+        class="h-full bg-amber-600 dark:bg-amber-500 rounded-full"
+        style="width: 0%"
+      ></div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ src }}>
+  const player = document.getElementById("audio-player");
+  const playBtn = document.getElementById("play-btn");
+  const iconPlay = document.getElementById("icon-play");
+  const iconPause = document.getElementById("icon-pause");
+  const progressBar = document.getElementById("progress-bar");
+  const progressFill = document.getElementById("progress-fill");
+  const timeDisplay = document.getElementById("time-display");
+
+  const audio = new Audio(src);
+
+  function fmt(s) {
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2, "0")}`;
+  }
+
+  playBtn.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      iconPlay.classList.add("hidden");
+      iconPause.classList.remove("hidden");
+    } else {
+      audio.pause();
+      iconPlay.classList.remove("hidden");
+      iconPause.classList.add("hidden");
+    }
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    const pct = (audio.currentTime / audio.duration) * 100;
+    progressFill.style.width = pct + "%";
+    timeDisplay.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration || 0)}`;
+  });
+
+  audio.addEventListener("ended", () => {
+    iconPlay.classList.remove("hidden");
+    iconPause.classList.add("hidden");
+    progressFill.style.width = "0%";
+  });
+
+  progressBar.addEventListener("click", (e) => {
+    const rect = progressBar.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  });
+</script>

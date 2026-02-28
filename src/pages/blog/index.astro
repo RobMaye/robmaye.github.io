@@ -6,6 +6,8 @@ import { getCollection } from "astro:content";
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
+
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
 ---
 
 <BaseLayout title="Writing — Rob Maye" description="Long-form thoughts on AI, cognition, and systems.">
@@ -14,19 +16,33 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   >
     Writing
   </h1>
-  <p class="text-stone-500 dark:text-stone-400 mb-10">
+  <p class="text-stone-500 dark:text-stone-400 mb-6">
     Long-form thoughts on AI, cognition, and systems.
   </p>
 
+  {allTags.length > 0 && (
+    <div class="flex flex-wrap gap-2 mb-8" id="tag-filters">
+      {allTags.map((tag) => (
+        <button
+          data-tag={tag}
+          class="text-xs font-mono px-2.5 py-1 rounded-full border border-stone-200 dark:border-stone-700 text-stone-500 dark:text-stone-400 hover:border-amber-500 hover:text-amber-600 dark:hover:border-amber-500 dark:hover:text-amber-400 transition-colors cursor-pointer"
+        >
+          #{tag}
+        </button>
+      ))}
+    </div>
+  )}
+
   {
     posts.length > 0 ? (
-      <div class="divide-y divide-stone-200 dark:divide-stone-800">
+      <div class="divide-y divide-stone-200 dark:divide-stone-800" id="post-list">
         {posts.map((post) => (
           <BlogPostCard
             title={post.data.title}
             description={post.data.description}
             pubDate={post.data.pubDate}
             slug={post.id}
+            tags={post.data.tags}
           />
         ))}
       </div>
@@ -37,3 +53,38 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
     )
   }
 </BaseLayout>
+
+<script>
+  const filters = document.getElementById("tag-filters");
+  const posts = document.querySelectorAll<HTMLAnchorElement>("#post-list > a");
+  let active: string | null = null;
+
+  filters?.addEventListener("click", (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>("button[data-tag]");
+    if (!btn) return;
+
+    const tag = btn.dataset.tag!;
+    active = active === tag ? null : tag;
+
+    // Update button styles
+    filters.querySelectorAll("button").forEach((b) => {
+      const isActive = b.dataset.tag === active;
+      b.classList.toggle("bg-amber-600", isActive);
+      b.classList.toggle("dark:bg-amber-500", isActive);
+      b.classList.toggle("text-white", isActive);
+      b.classList.toggle("dark:text-stone-950", isActive);
+      b.classList.toggle("border-amber-600", isActive);
+      b.classList.toggle("dark:border-amber-500", isActive);
+      b.classList.toggle("text-stone-500", !isActive);
+      b.classList.toggle("dark:text-stone-400", !isActive);
+      b.classList.toggle("border-stone-200", !isActive);
+      b.classList.toggle("dark:border-stone-700", !isActive);
+    });
+
+    // Filter posts
+    posts.forEach((post) => {
+      const tags = (post.dataset.tags || "").split(",");
+      post.style.display = !active || tags.includes(active) ? "" : "none";
+    });
+  });
+</script>
