@@ -118,7 +118,10 @@ export const GET: APIRoute = async ({ props }) => {
     }
   );
 
-  const png = await sharp(Buffer.from(svg)).png().toBuffer();
+  const png = await sharp(Buffer.from(svg))
+    .flatten({ background: { r: 250, g: 250, b: 249 } }) // stone-50, remove alpha
+    .png({ quality: 90 })
+    .toBuffer();
 
   return new Response(png, {
     headers: { "Content-Type": "image/png" },
