@@ -47,13 +47,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
 {
   image && (
-    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
   )
 }
 
