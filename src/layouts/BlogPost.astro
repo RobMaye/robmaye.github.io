@@ -11,16 +11,16 @@ interface Props {
   pubDate: Date;
   updatedDate?: Date;
   tags?: string[];
-
+  image?: string;
   claudeNote?: string;
   body: string;
 }
 
-const { title, description, pubDate, updatedDate, tags = [], claudeNote, body } =
+const { title, description, pubDate, updatedDate, tags = [], image, claudeNote, body } =
   Astro.props;
 ---
 
-<BaseLayout title={`${title} — Rob Maye`} description={description}>
+<BaseLayout title={`${title} — Rob Maye`} description={description} image={image}>
   <article>
     <header class="mb-10">
       <h1
