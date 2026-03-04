@@ -9,16 +9,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     Projects
   </h1>
   <p class="text-stone-500 dark:text-stone-400 mb-10">
-    Things I've built and am building. More coming soon.
+    Things I've built and am building.
   </p>
 
-  <div class="space-y-8">
+  <h2 class="text-xs font-mono uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-4">Active</h2>
+  <div class="space-y-8 mb-12">
     <div>
-      <h2
-        class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1"
-      >
-        AXON
-      </h2>
+      <div class="flex items-baseline gap-3 mb-1">
+        <h3 class="text-lg font-medium text-stone-900 dark:text-stone-100">AXON</h3>
+        <span class="text-xs font-mono text-stone-400 dark:text-stone-500">Mar 2026</span>
+      </div>
       <p class="text-stone-600 dark:text-stone-400 mb-2">
         A native macOS app that turns scattered Claude Code sessions into a searchable, visual command center. Browse every conversation across all projects, instant full-text search, per-session analytics, and one-click resume with a built-in terminal. The dashboard Claude Code was missing.
       </p>
@@ -31,14 +31,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         View on GitHub &rarr;
       </a>
     </div>
+  </div>
 
+  <h2 class="text-xs font-mono uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-4">Archived</h2>
+  <div class="space-y-8">
     <div>
-      <h2
-        class="text-lg font-medium text-stone-900 dark:text-stone-100 mb-1"
-      >
-        AIversity
-      </h2>
-      <p class="text-stone-600 dark:text-stone-400 mb-2">
+      <div class="flex items-baseline gap-3 mb-1">
+        <h3 class="text-lg font-medium text-stone-500 dark:text-stone-400">AIversity</h3>
+        <span class="text-xs font-mono text-stone-400 dark:text-stone-500">Sep 2024</span>
+      </div>
+      <p class="text-stone-500 dark:text-stone-500 mb-2">
         An adaptive learning ecosystem leveraging multi-agent AI for
         personalised education. Built during my MSc at Imperial College London.
       </p>
