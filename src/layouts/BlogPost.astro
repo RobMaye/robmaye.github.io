@@ -64,4 +64,61 @@ const { title, description, pubDate, updatedDate, tags = [], image, claudeNote, 
       )
     }
   </article>
+
+  <!-- Fullscreen image lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-[100] hidden cursor-zoom-out" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-stone-950/95 backdrop-blur-md" id="lightbox-bg"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-8">
+      <img id="lightbox-img" class="max-w-full max-h-full object-contain rounded-lg" style="box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 100px rgba(217,119,6,0.08);" />
+    </div>
+    <button id="lightbox-close" class="absolute top-6 right-6 text-stone-400 hover:text-stone-100 transition-colors text-2xl font-light" aria-label="Close">&times;</button>
+  </div>
 </BaseLayout>
+
+<script>
+  const lightbox = document.getElementById('lightbox')!;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxBg = document.getElementById('lightbox-bg')!;
+  const lightboxClose = document.getElementById('lightbox-close')!;
+
+  // Click any prose image to open
+  document.querySelectorAll('.prose img').forEach(img => {
+    (img as HTMLElement).style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      lightboxImg.src = (img as HTMLImageElement).src;
+      lightboxImg.alt = (img as HTMLImageElement).alt;
+      lightbox.classList.remove('hidden');
+      lightbox.offsetHeight; // force reflow
+      lightbox.style.opacity = '1';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  const close = () => {
+    lightbox.style.opacity = '0';
+    setTimeout(() => {
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 200);
+  };
+
+  lightboxBg.addEventListener('click', close);
+  lightboxClose.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) close();
+  });
+</script>
+
+<style>
+  #lightbox {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  #lightbox img {
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #lightbox:not(.hidden) img {
+    transform: scale(1);
+  }
+</style>
