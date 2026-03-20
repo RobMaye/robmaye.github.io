@@ -127,9 +127,9 @@
 
 .prose img {
   border-radius: 1rem;
-  margin: 3rem -8rem;
-  max-width: calc(100% + 16rem);
-  width: calc(100% + 16rem);
+  margin: 2rem 0;
+  max-width: 100%;
+  width: 100%;
   border: 1px solid rgba(120, 113, 108, 0.15);
   box-shadow:
     0 25px 80px rgba(0, 0, 0, 0.35),
@@ -162,6 +162,14 @@
     0 12px 30px rgba(0, 0, 0, 0.5),
     0 0 80px rgba(217, 119, 6, 0.1),
     0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 768px) {
+  .prose img {
+    margin: 3rem -8rem;
+    max-width: calc(100% + 16rem);
+    width: calc(100% + 16rem);
+  }
 }
 
 /* Smooth theme transitions */
