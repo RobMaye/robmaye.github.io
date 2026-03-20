@@ -15,3 +15,6 @@ node_modules/
 # Private (local only, never commit)
 _private_context.md
 references/
+
+# Remotion experiments (local only)
+remotion-experiments/

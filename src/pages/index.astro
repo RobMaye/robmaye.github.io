@@ -3,6 +3,11 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import "../styles/global.css";
 import { SITE } from "../data/site";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
 ---
 
 <!doctype html>
@@ -20,31 +25,33 @@ import { SITE } from "../data/site";
     <Header />
 
     <main class="flex-1 w-full max-w-xl mx-auto px-6 pt-10 pb-0 relative z-10 flex flex-col justify-center text-center">
-      <a
-        href="/blog/what-holds-when-youre-worthless"
-        class="group inline-block"
-      >
-        <span class="text-xs font-mono uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-1 block">Latest</span>
-        <span class="text-lg font-medium text-amber-700 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">
-          What Holds When You're Worthless? <span class="inline-block group-hover:translate-x-0.5 transition-transform">&rarr;</span>
-        </span>
-        <span class="text-xs font-mono text-stone-400 dark:text-stone-500 mt-1 block">27 Feb 2026</span>
-      </a>
+      <span class="text-xs font-mono uppercase tracking-widest text-stone-400 dark:text-stone-500 mb-3 block">Writing</span>
+      <div class="space-y-3">
+        {posts.map((post, i) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="group block"
+          >
+            <span class={`font-medium group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors ${i === 0 ? 'text-xl text-amber-700 dark:text-amber-400' : 'text-sm text-stone-500 dark:text-stone-400'}`}>
+              {post.data.title} <span class="inline-block group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+            </span>
+            <span class={`font-mono mt-0.5 block ${i === 0 ? 'text-xs text-stone-400 dark:text-stone-500' : 'text-[10px] text-stone-400/70 dark:text-stone-500/70'}`}>
+              {post.data.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="flex items-center justify-center gap-4 mt-6 text-xs text-stone-400/60 dark:text-stone-500/60">
+        <span>&copy; 2026</span>
+        <a href="https://github.com/robmaye" target="_blank" rel="noopener noreferrer" class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">GitHub</a>
+        <a href="https://linkedin.com/in/robmaye" target="_blank" rel="noopener noreferrer" class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">LinkedIn</a>
+        <a href="mailto:robmaye1@gmail.com" class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">Email</a>
+      </div>
     </main>
 
     <!-- Art renders at natural aspect ratio, container clips overflow -->
     <div class="relative w-full flex-1 min-h-0 overflow-hidden" id="art-wrapper">
       <canvas id="hero-art" class="w-full block absolute bottom-0 left-0 md:static"></canvas>
-      <div class="absolute top-[30%] -translate-y-1/2 left-0 right-0 flex justify-center">
-        <div class="max-w-2xl w-full px-6 flex items-center justify-between text-sm text-stone-400 dark:text-stone-500">
-          <span>&copy; 2026 Rob Maye</span>
-          <div class="flex items-center gap-4">
-            <a href="https://github.com/robmaye" target="_blank" rel="noopener noreferrer" class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">GitHub</a>
-            <a href="https://linkedin.com/in/robmaye" target="_blank" rel="noopener noreferrer" class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">LinkedIn</a>
-            <a href="mailto:robmaye1@gmail.com" class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">Email</a>
-          </div>
-        </div>
-      </div>
     </div>
   </body>
 </html>

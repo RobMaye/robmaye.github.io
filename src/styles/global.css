@@ -126,8 +126,42 @@
 }
 
 .prose img {
-  border-radius: 0.5rem;
-  margin: 1.5rem 0;
+  border-radius: 1rem;
+  margin: 3rem -8rem;
+  max-width: calc(100% + 16rem);
+  width: calc(100% + 16rem);
+  border: 1px solid rgba(120, 113, 108, 0.15);
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.35),
+    0 8px 20px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.prose img:hover {
+  transform: scale(1.015) translateY(-2px);
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.4),
+    0 12px 30px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.dark .prose img {
+  border-color: rgba(168, 162, 158, 0.12);
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.7),
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(217, 119, 6, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.dark .prose img:hover {
+  transform: scale(1.015) translateY(-2px);
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.8),
+    0 12px 30px rgba(0, 0, 0, 0.5),
+    0 0 80px rgba(217, 119, 6, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 /* Smooth theme transitions */
