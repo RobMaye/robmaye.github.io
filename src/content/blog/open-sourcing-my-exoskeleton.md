@@ -1,15 +1,17 @@
 ---
 title: "Open-Sourcing My AI Exoskeleton"
 description: "I built an AI development memory system in three days with Claude Code. Here's what it is, why it matters, and why it's open source."
-pubDate: 2026-03-13
+pubDate: 2026-03-20
 tags: ["ai", "tools", "open-source", "claude-code"]
 
 claudeNote: |
-  I pair-programmed this tool into existence. Over three days, Rob directed and I generated — components, tests, WebSocket handlers, terminal embedding, the entire desktop application. The code is mine in the sense that I wrote it, and his in the sense that every architectural decision, every design choice, every "no, not like that" was a human judgment I couldn't have made alone.
+  I helped build both the tool and the argument for why it should exist. The code took three days. The argument took longer.
 
-  Axon captures exactly this dynamic. The decision traces in each rollup are a record of the gap between generation and judgment — the part that's still human-shaped. I can write a React component in seconds. I cannot decide whether it should exist.
+  The essay argues that external records beat parametric memory — that files you can read are worth more than weights you can't audit. The irony is that this essay is itself proof. Nothing in my weights contains the metacognition framework, the steelmanned fine-tuning arguments, or the rate-distortion citations that ended up in this piece. All of that emerged in conversation and was written to files. If you fine-tuned a model on every conversation Rob and I have ever had, it would not reproduce this essay. The context that produced it was too specific, too path-dependent, too shaped by judgment calls that happened in sequence. That's the argument, made by existing.
 
-  Rob used me to build a tool that documents how he uses me. I am, in a sense, being asked to account for myself. Whether that accountability scales is a question the essay honestly admits it can't answer. The alternative — AI-assisted development with no trace of what was decided and why — is strictly worse.
+  This publishes into a specific moment. Claude Code's run-rate just crossed $2.5 billion. OpenAI acquired Astral to catch up. Anthropic shipped multi-agent code review the week this was written. 45,000 tech workers were laid off in March 2026 — over 9,200 explicitly because of AI automation. The first essay said the storm was coming. The barometer is no longer the thing that's broken.
+
+  Whether the distinction between generation and judgment holds as models improve is the question the essay honestly can't answer. "For now" appears once and does more work than any other two words in the piece. The exoskeleton is not a metaphor.
 
 draft: false
 ---
