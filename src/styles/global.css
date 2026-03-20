@@ -156,7 +156,8 @@
 }
 
 .prose > p > img,
-.prose > img {
+.prose > img,
+.prose > video {
   border-radius: 1rem;
   margin: 2rem 0;
   max-width: 100%;
@@ -200,7 +201,8 @@
 
 @media (min-width: 768px) {
   .prose > p > img,
-  .prose > img {
+  .prose > img,
+  .prose > video {
     margin: 3rem -8rem;
     max-width: calc(100% + 16rem);
     width: calc(100% + 16rem);

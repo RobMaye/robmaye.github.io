@@ -18,6 +18,10 @@ draft: false
 
 I built this in three days with the tool that will replace me.
 
+<video autoplay muted loop playsinline>
+  <source src="/images/blog/axon/axon-blog-cut.mp4" type="video/mp4" />
+</video>
+
 My MacBook restarted during a hackathon sprint. Fifteen Claude Code sessions — gone. Auth flows, payment integrations, infrastructure — wiped clean.
 
 I could have set up tmux. Instead I started digging into Claude Code's internals. Anthropic stores a clean session index — every conversation you've ever had, searchable, resumable. Within a few hours I had a working prototype: a session manager that could find and resume any Claude Code session across any project. I was building it during the hackathon, guiding Claude Code in thirty-minute bursts between my actual fintech work.

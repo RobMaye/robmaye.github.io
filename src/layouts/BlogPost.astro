@@ -70,6 +70,7 @@ const { title, description, pubDate, updatedDate, tags = [], image, claudeNote, 
     <div class="absolute inset-0 bg-stone-950/95 backdrop-blur-md" id="lightbox-bg"></div>
     <div class="absolute inset-0 flex items-center justify-center p-8">
       <img id="lightbox-img" class="max-w-full max-h-full object-contain rounded-lg" style="box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 100px rgba(217,119,6,0.08);" />
+      <video id="lightbox-video" class="max-w-full max-h-full object-contain rounded-lg hidden" autoplay loop style="box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 100px rgba(217,119,6,0.08);" />
     </div>
     <button id="lightbox-close" class="absolute top-6 right-6 text-stone-400 hover:text-stone-100 transition-colors text-2xl font-light" aria-label="Close">&times;</button>
   </div>
@@ -78,8 +79,16 @@ const { title, description, pubDate, updatedDate, tags = [], image, claudeNote, 
 <script>
   const lightbox = document.getElementById('lightbox')!;
   const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxVideo = document.getElementById('lightbox-video') as HTMLVideoElement;
   const lightboxBg = document.getElementById('lightbox-bg')!;
   const lightboxClose = document.getElementById('lightbox-close')!;
+
+  const openLightbox = () => {
+    lightbox.classList.remove('hidden');
+    lightbox.offsetHeight;
+    lightbox.style.opacity = '1';
+    document.body.style.overflow = 'hidden';
+  };
 
   // Click any prose image to open
   document.querySelectorAll('.prose img').forEach(img => {
@@ -87,15 +96,29 @@ const { title, description, pubDate, updatedDate, tags = [], image, claudeNote, 
     img.addEventListener('click', () => {
       lightboxImg.src = (img as HTMLImageElement).src;
       lightboxImg.alt = (img as HTMLImageElement).alt;
-      lightbox.classList.remove('hidden');
-      lightbox.offsetHeight; // force reflow
-      lightbox.style.opacity = '1';
-      document.body.style.overflow = 'hidden';
+      lightboxImg.classList.remove('hidden');
+      lightboxVideo.classList.add('hidden');
+      lightboxVideo.pause();
+      openLightbox();
+    });
+  });
+
+  // Click any prose video to open
+  document.querySelectorAll('.prose video').forEach(vid => {
+    (vid as HTMLElement).style.cursor = 'zoom-in';
+    vid.addEventListener('click', () => {
+      const source = (vid as HTMLVideoElement).querySelector('source');
+      lightboxVideo.src = source ? source.src : (vid as HTMLVideoElement).src;
+      lightboxVideo.classList.remove('hidden');
+      lightboxImg.classList.add('hidden');
+      lightboxVideo.play();
+      openLightbox();
     });
   });
 
   const close = () => {
     lightbox.style.opacity = '0';
+    lightboxVideo.pause();
     setTimeout(() => {
       lightbox.classList.add('hidden');
       document.body.style.overflow = '';
@@ -124,11 +147,13 @@ const { title, description, pubDate, updatedDate, tags = [], image, claudeNote, 
     opacity: 0;
     transition: opacity 0.25s ease;
   }
-  #lightbox img {
+  #lightbox img,
+  #lightbox video {
     transform: scale(0.95);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  #lightbox:not(.hidden) img {
+  #lightbox:not(.hidden) img,
+  #lightbox:not(.hidden) video {
     transform: scale(1);
   }
 </style>
