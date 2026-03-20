@@ -73,7 +73,7 @@ You could read your Axon data in twenty years with `cat`. The [archival communit
 
 Compute is rented — Claude today, something else tomorrow. Your `.axon/` directory doesn't change when you switch models. Look at what happened on OpenAI's platform: [base models get deprecated](https://platform.openai.com/docs/deprecations), fine-tuning APIs get replaced, and then you can't iterate on your fine-tune — you're frozen on a stale model while the frontier moves ahead. Even with open weights, your adapter is pinned to that model's architecture — Llama 3 LoRAs don't transfer to Llama 5. Maybe retraining gets instant. You still need something to train on.
 
-The rollup step calls Claude's API — your signals leave your machine for synthesis, the same way they do every time you use Claude Code or any AI tool. But the *output* lands back in your filesystem as files you own. No platform stores your decision history or project context. If something changes, `git diff` tells you what and when. Until there's a step change in model explainability, text is the only medium where verification means reading it. Weights are a black box. Text is a record.
+The rollup step calls Claude's API — your signals leave your machine for synthesis, the same way they do every time you use Claude Code or any AI tool. But the *output* lands back in your filesystem as files you own. No platform stores your decision history or project context. If something changes, `git diff` tells you what and when. Until there's a step change in model explainability, text is the only medium where verification means reading it. Weights are a black box. Text is a record. An imperfect one — the rollups are AI-synthesised, and synthesis is lossy too. But lossy compression you can read and correct beats lossy compression you can't see at all. And if lossy AI synthesis weren't useful, Claude Code wouldn't exist and I wouldn't have built Axon with it in three days.
 
 The latest version runs as a server. I have a Mac Mini at home and an M5 MacBook for everything else. The Mini runs Claude Code, hosts all my repos, and accumulates memory. The MacBook is just a browser into it over Tailscale. The server is the product. The laptop is disposable.
 
@@ -133,7 +133,7 @@ I argued two weeks ago that individual solutions to structural problems don't wo
 
 The window for encoding human leverage into AI systems might already be closing. If that's true, there's no case for hoarding a developer memory schema. MIT license. Fork it, extend it, build something better.
 
-My MacBook restarted and I lost my terminals. So I built an exoskeleton — not for my body, but for every part of my cognition that breaks under load. It writes everything down in files I can read, fork, and hand to someone else. And I built it with the AI that made it necessary.
+My MacBook restarted and I lost my terminals. So I built an exoskeleton — not for my body, but for the parts of my cognition that break under load. It writes everything down in files I can read, fork, and hand to someone else. And I built it with the AI that made it necessary.
 
 <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;">
   <a href="https://github.com/AxonEmbodied/AXON" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 1.25rem; border:1px solid; border-radius:0.375rem; font-weight:600; text-decoration:none;">GitHub →</a>
