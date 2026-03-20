@@ -107,6 +107,16 @@ const { title, description, pubDate, updatedDate, tags = [], image, claudeNote, 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) close();
   });
+
+  // Link hover previews — set data-domain for external links
+  document.querySelectorAll('.prose a[href^="http"]').forEach(a => {
+    try {
+      const url = new URL((a as HTMLAnchorElement).href);
+      const domain = url.hostname.replace('www.', '');
+      const path = url.pathname.length > 1 ? url.pathname.slice(0, 30) + (url.pathname.length > 30 ? '…' : '') : '';
+      (a as HTMLElement).setAttribute('data-domain', domain + path);
+    } catch {}
+  });
 </script>
 
 <style>

@@ -56,7 +56,7 @@ There's also a desktop app — a morning briefing view, a timeline of rollup car
 
 ## Where the memory lives
 
-Everything Axon captures lives in `~/.axon/` — markdown files with YAML frontmatter. Rollups are markdown. Decision traces, state snapshots — all text. Git-versioned, human-readable, portable.
+Every tool in this space wants to own your data. Axon stores everything in `~/.axon/` — markdown files with YAML frontmatter. Rollups are markdown. Decision traces, state snapshots — all text. Git-versioned on every rollup, human-readable, portable. In a world of proprietary context windows and platform lock-in, plain text in a directory you own is a radical choice.
 
 ```
 ~/.axon/workspaces/my-project/
@@ -95,7 +95,21 @@ You still write things down even though you have a brain. The value of the exter
 
 And if the market eventually settles on fine-tuning — if model explainability has a breakthrough and weights become truly auditable — you can fine-tune on your Axon files. They're structured training data whenever you want them to be, and better training data than raw chat logs because they've already been synthesised into decision traces with context. The reverse isn't true. You can't extract readable decision traces from a fine-tune. Start with the record you can read. Fine-tune later if you want to. The files are the foundation either way.
 
-You can only fork what you can read. You can't fork weights. Andrej Karpathy [recently said](https://x.com/karpathy/status/2031767720933634100) you'll be able to fork agentic orgs — he was talking about organisations, but the principle scales down. That only works if the memory is in files.
+You can only fork what you can read. You can't fork weights.
+
+<div style="background:#1c1917; border:1px solid #44403c; border-radius:12px; padding:20px 24px; margin:1.5rem 0; font-style:normal;">
+<div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+<img src="https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_normal.jpg" style="width:44px; height:44px; border-radius:50%; margin:0 !important; box-shadow:none !important; border:none !important;" />
+<div style="line-height:1.3;">
+<div style="font-weight:600; font-size:0.95rem; color:#fafaf9;">Andrej Karpathy</div>
+<div style="font-family:var(--font-mono); font-size:0.75rem; color:#78716c;">@karpathy · Mar 11, 2026</div>
+</div>
+<a href="https://x.com/karpathy/status/2031767720933634100" target="_blank" rel="noopener noreferrer" style="margin-left:auto; text-decoration:none; font-size:1.1rem; color:#78716c;">𝕏</a>
+</div>
+<p style="font-size:1.05rem; line-height:1.6; color:#e7e5e4; margin:0 !important;">You can't fork classical orgs (eg Microsoft) but you'll be able to fork agentic orgs.</p>
+</div>
+
+He was talking about organisations, but the principle scales down. That only works if the memory is in files.
 
 ## The recursive layer
 
@@ -107,17 +121,19 @@ That "for now" is the whole thing. The constraint on productive output is shifti
 
 That's a contradiction. The first essay called this an existential threat. This one tries to make it useful. Everyone building in this space right now is holding both — the alternative is paralysis.
 
-Axon is my attempt to make that bottleneck count while it still matters. The morning briefings, the decision traces, the spatial canvas — they make the human director faster and more informed. Not because the human is the best coder in the room anymore. Because the human is the one deciding what matters enough to keep.
+Axon is my attempt to make that bottleneck count while it still matters — not by making the human faster at coding, but by compensating for the parts of human cognition that break under load. Attention is rivalrous: you can only focus on one thing, and everything else decays silently. A file with zero tests gets carried for five days not because you ignored it but because you literally couldn't see it while focused on payments. Memory is self-serving: you don't recall decisions, you reconstruct them to fit the current narrative. Decision traces are immune to hindsight bias. You're blind to patterns across time — is this the third sprint where error handling slipped? The rollups make temporal patterns visible that no amount of discipline would surface. Context doesn't vanish on a cliff, it fades on a curve — by day three you remember the shape but not the constraints. The morning briefing restores full fidelity every time.
+
+An exoskeleton doesn't think for you. It compensates for structural weaknesses in your body. These cognitive failures aren't bugs — they're how brains work. Rivalrous attention, lossy recall, hindsight bias, temporal blindness. No amount of discipline fixes them. The external record does.
 
 ## Why open source
 
-Every rollup is a timestamped record of what a human directed, approved, rejected, and prioritised during AI-assisted work. It's narrative provenance. A legible record that a human was here, that decisions were made and not just generated. Not oversight infrastructure — that would require tamper-evidence and accountability chains this doesn't have. But something. More than what most AI-assisted development produces today, which is nothing.
+When AI generates everything, the only proof a human was here is the record of what they *rejected*. Not what was built — what was judged. Every rollup is that record: what a human directed, approved, rejected, and prioritised during AI-assisted work. It's narrative provenance. Not oversight infrastructure — that would require tamper-evidence and accountability chains this doesn't have yet. But something. More than what most AI-assisted development produces today, which is nothing.
 
 I argued two weeks ago that individual solutions to structural problems don't work. This is an individual solution to a structural problem. I know.
 
 The window for encoding human leverage into AI systems might already be closing. If that's true, there's no case for hoarding a developer memory schema. MIT license. Fork it, extend it, build something better.
 
-My MacBook restarted and I lost my terminals. So I built a memory system that writes everything down in files I can read, fork, and hand to someone else. I built it with the AI that made it necessary.
+My MacBook restarted and I lost my terminals. So I built an exoskeleton — not for my body, but for every part of my cognition that breaks under load. It writes everything down in files I can read, fork, and hand to someone else. And I built it with the AI that made it necessary.
 
 <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;">
   <a href="https://github.com/AxonEmbodied/AXON" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 1.25rem; border:1px solid; border-radius:0.375rem; font-weight:600; text-decoration:none;">GitHub →</a>
